@@ -9,5 +9,6 @@ urlpatterns = [
     path('hello/<str:username>', views.Hello),
     path('projects/', views.projects),
     # path('tasks/<str:title>', views.tasks), ejemplo de como enviar info en la url
-    path('tasks/', views.tasks)
+    path('tasks/', views.tasks),
+    path('create_task/', views.create_task)
 ]

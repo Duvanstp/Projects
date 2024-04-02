@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
  # para crear respuestas al servidor como strings
+from .forms import CreateNewTask
 
 from .models import Project, Task # nota no olvide el punto antes de model
 
@@ -41,3 +42,17 @@ def tasks(request): # le puedo pasar el parametro title o id para que busque por
                   {
                       'tasks': tasks
                   })
+
+def create_task(request):
+    if request.method == 'GET':
+        return render(request, "create_task.html",
+                  {
+                      'form': CreateNewTask()
+                  }
+                  )
+    else:
+        Task.objects.create(title=request.POST['title'],
+                        description=request.POST['description'],
+                        project_id = 2
+                        )
+        return redirect('/tasks/')

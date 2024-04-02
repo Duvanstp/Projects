@@ -1,0 +1,22 @@
+{%extends 'layouts/base.html' %}
+
+
+{% block content %}
+
+<h1>
+    Create a new task
+</h1>
+
+<!-- <input type="text">
+<textarea name="" id="" cols="30" rows="10"></textarea> --> 
+<!-- eso anterior es la manera clasica con django puedo crear forms ver archivo forms-->
+
+<form method="POST">
+    {% csrf_token %} <!-- {{ csrf_token}} para poder hacer post a django -->
+    {{form.as_p}}
+    <button>
+        Guardar
+    </button>
+</form> 
+{% endblock %}
+
